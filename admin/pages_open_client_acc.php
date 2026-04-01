@@ -30,7 +30,7 @@ if (isset($_POST['open_account'])) {
 
     //declare a varible which will be passed to alert function
     if ($stmt) {
-        $success = "iBank Account Opened";
+        $success = "ACLEDA BANK Plc. Account Opened";
     } else {
         $err = "Please Try Again Or Try Later";
     }
@@ -69,12 +69,12 @@ if (isset($_POST['open_account'])) {
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Open <?php echo $row->name; ?> iBanking Account</h1>
+                                <h1>Open <?php echo $row->name; ?> ACLEDA BANK Plc. Account</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="pages_open_acc.php">iBanking Accounts</a></li>
+                                    <li class="breadcrumb-item"><a href="pages_open_acc.php">ACLEDA BANK Plc. Accounts</a></li>
                                     <li class="breadcrumb-item"><a href="pages_open_acc.php">Open </a></li>
                                     <li class="breadcrumb-item active"><?php echo $row->name; ?></li>
                                 </ol>
@@ -187,7 +187,7 @@ if (isset($_POST['open_account'])) {
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" name="open_account" class="btn btn-success">Open iBanking Account</button>
+                                            <button type="submit" name="open_account" class="btn btn-success">Open ACLEDA BANK Plc. Account</button>
                                         </div>
                                     </form>
                                 </div>

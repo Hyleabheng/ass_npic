@@ -62,6 +62,25 @@ $staff_id = $_SESSION['staff_id'];
         $stmt->fetch();
         $stmt->close();
 
+        //get total incoming transfers
+        $account_id = $_GET['account_id'];
+        $ret = "SELECT account_number FROM iB_bankAccounts WHERE account_id = ?";
+        $stmt = $mysqli->prepare($ret);
+        $stmt->bind_param('i', $account_id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $row = $res->fetch_object();
+        $account_number = $row->account_number;
+        $stmt->close();
+
+        $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE receiving_acc_no = ? AND tr_type = 'Transfer'";
+        $stmt = $mysqli->prepare($result);
+        $stmt->bind_param('s', $account_number);
+        $stmt->execute();
+        $stmt->bind_result($incoming_transfer);
+        $stmt->fetch();
+        $stmt->close();
+
 
 
         $account_id = $_GET['account_id'];
@@ -76,8 +95,10 @@ $staff_id = $_SESSION['staff_id'];
             $banking_rate = ($row->acc_rates) / 100;
             //compute Money out
             $money_out = $withdrawal + $Transfer;
+            //compute Funds In (Deposits + Incoming Transfers)
+            $funds_in = $deposit + $incoming_transfer;
             //compute the balance
-            $money_in = $deposit - $money_out;
+            $money_in = $funds_in - $money_out;
             //get the rate
             $rate_amt = $banking_rate * $money_in;
             //compute the intrest + balance 
@@ -115,7 +136,7 @@ $staff_id = $_SESSION['staff_id'];
                                     <div class="row">
                                         <div class="col-12">
                                             <h4>
-                                                <i class="fas fa-bank"></i> iBanking Corporation Balance Enquiry
+                                                <i class="fas fa-bank"></i> ACLEDA BANK Plc. Corporation Balance Enquiry
                                                 <small class="float-right">Date: <?php echo date('d/m/Y'); ?></small>
                                             </h4>
                                         </div>
@@ -154,8 +175,9 @@ $staff_id = $_SESSION['staff_id'];
                                                 <thead>
                                                     <tr>
                                                         <th>Deposits</th>
+                                                        <th>Incoming Transfers</th>
                                                         <th>Withdrawals</th>
-                                                        <th>Transfers</th>
+                                                        <th>Outgoing Transfers</th>
                                                         <th>Subtotal</th>
                                                     </tr>
                                                 </thead>
@@ -163,6 +185,7 @@ $staff_id = $_SESSION['staff_id'];
 
                                                     <tr>
                                                         <td>$ <?php echo $deposit; ?></td>
+                                                        <td>$ <?php echo $incoming_transfer; ?></td>
                                                         <td>$ <?php echo $withdrawal; ?></td>
                                                         <td>$ <?php echo $Transfer; ?></td>
                                                         <td>$ <?php echo $money_in; ?></td>
@@ -192,7 +215,7 @@ $staff_id = $_SESSION['staff_id'];
                                                 <table class="table table-bordered">
                                                     <tr>
                                                         <th style="width:50%">Funds In:</th>
-                                                        <td>$ <?php echo $deposit; ?></td>
+                                                        <td>$ <?php echo $funds_in; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Funds Out</th>

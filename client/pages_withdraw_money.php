@@ -30,13 +30,50 @@ if (isset($_POST['withdrawal'])) {
     *   
     */
 
-    $result = "SELECT SUM(transaction_amt) FROM  iB_Transactions  WHERE account_id=?";
+    //get the total amount deposited
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Deposit' ";
     $stmt = $mysqli->prepare($result);
     $stmt->bind_param('i', $account_id);
     $stmt->execute();
-    $stmt->bind_result($amt);
+    $stmt->bind_result($deposit);
     $stmt->fetch();
     $stmt->close();
+
+    //get total amount withdrawn
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Withdrawal' ";
+    $stmt = $mysqli->prepare($result);
+    $stmt->bind_param('i', $account_id);
+    $stmt->execute();
+    $stmt->bind_result($withdrawal);
+    $stmt->fetch();
+    $stmt->close();
+
+    //get total amount transfered
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Transfer' ";
+    $stmt = $mysqli->prepare($result);
+    $stmt->bind_param('i', $account_id);
+    $stmt->execute();
+    $stmt->bind_result($Transfer);
+    $stmt->fetch();
+    $stmt->close();
+
+    //get incoming transfers
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE receiving_acc_no = ? AND tr_type = 'Transfer'";
+    $stmt = $mysqli->prepare($result);
+    $stmt->bind_param('s', $account_number);
+    $stmt->execute();
+    $stmt->bind_result($incoming_transfer);
+    $stmt->fetch();
+    $stmt->close();
+
+
+    //compute Funds In (Deposits + Incoming Transfers)
+    $funds_in = $deposit + $incoming_transfer;
+    //compute Funds Out (Withdrawals + Transfers)
+    $funds_out = $withdrawal + $Transfer;
+
+    //compute the balance
+    $amt = $funds_in - $funds_out;
 
 
     if ($transaction_amt > $amt) {
@@ -127,7 +164,7 @@ if (isset($_POST['withdrawal'])) {
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="pages_deposits">iBank Finances</a></li>
+                                    <li class="breadcrumb-item"><a href="pages_deposits">ACLEDA BANK Plc. Finances</a></li>
                                     <li class="breadcrumb-item"><a href="pages_deposits">Withdrawal</a></li>
                                     <li class="breadcrumb-item active"><?php echo $row->acc_name; ?></li>
                                 </ol>

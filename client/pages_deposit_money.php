@@ -107,7 +107,7 @@ if (isset($_POST['deposit'])) {
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="pages_deposits">iBank Finances</a></li>
+                                    <li class="breadcrumb-item"><a href="pages_deposits">ACLEDA BANK Plc. Finances</a></li>
                                     <li class="breadcrumb-item"><a href="pages_deposits">Deposits</a></li>
                                     <li class="breadcrumb-item active"><?php echo $row->acc_name; ?></li>
                                 </ol>

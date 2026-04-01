@@ -28,7 +28,7 @@ $client_id = $_SESSION['client_id'];
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>My iBank Accounts</h1>
+              <h1>My ACLEDA BANK Plc. Accounts</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -65,7 +65,7 @@ $client_id = $_SESSION['client_id'];
                   </thead>
                   <tbody><!-- Log on to codeastro.com for more projects! -->
                     <?php
-                    //fetch all iBank clients
+                    //fetch all ACLEDA BANK Plc. clients
                     $client_id = $_SESSION['client_id'];
                     $ret = "SELECT * FROM  iB_clients  WHERE client_id =?";
                     $stmt = $mysqli->prepare($ret);

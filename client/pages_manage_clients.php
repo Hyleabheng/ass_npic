@@ -47,7 +47,7 @@ if (isset($_GET['deleteClient'])) {
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="pages_manage_clients.php">iBank Staffs</a></li>
+                <li class="breadcrumb-item"><a href="pages_manage_clients.php">ACLEDA BANK Plc. Staffs</a></li>
                 <li class="breadcrumb-item active">Manage Clients</li>
               </ol>
             </div>
@@ -79,7 +79,7 @@ if (isset($_GET['deleteClient'])) {
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank clients
+                    //fetch all ACLEDA BANK Plc. clients
                     $ret = "SELECT * FROM  iB_clients ORDER BY RAND() ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok

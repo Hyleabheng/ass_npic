@@ -111,7 +111,7 @@ if (isset($_GET['RollBack_Transaction'])) {
                         <td><?php echo $row->client_name; ?></td>
                         <td><?php echo date("d-M-Y h:m:s ", strtotime($transTstamp)); ?></td>
                         <td>
-                          <a class="btn btn-danger btn-sm" href="pages_transactions_engine.php?RollBack_Transaction=<?php echo $row->tr_id; ?>">
+                          <a class="btn btn-danger btn-sm" href="pages_transactions_engine.php?RollBack_Transaction=<?php echo $row->tr_id; ?>" onclick="event.preventDefault(); confirmDelete(this.href);">
                             <i class="fas fa-power-off"></i>
                             Roll Back Transaction
                           </a>

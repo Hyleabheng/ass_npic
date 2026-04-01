@@ -54,7 +54,7 @@ if (isset($_POST['create_acc_type'])) {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="pages_add_acc_type.php">iBanking</a></li>
+                                <li class="breadcrumb-item"><a href="pages_add_acc_type.php">ACLEDA BANK Plc.</a></li>
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
@@ -105,7 +105,7 @@ if (isset($_POST['create_acc_type'])) {
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="submit" name="create_acc_type" class="btn btn-success">Add Account Type</button>
+                                        <button type="submit" name="create_acc_type" onclick="confirmUpdate(event)" class="btn btn-success">Add Account Type</button>
                                     </div>
                                 </form>
                             </div>

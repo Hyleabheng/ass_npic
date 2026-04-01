@@ -23,7 +23,7 @@ while ($sys = $res->fetch_object()) {
         <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/adminlte.min.css">
-        <!-- iBank custom UI -->
+        <!-- ACLEDA BANK Plc. custom UI -->
         <style>
             body.login-page {
                 background: #ffffff;
@@ -124,21 +124,40 @@ while ($sys = $res->fetch_object()) {
         <script defer src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
         <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
         <!-- Global Loading -->
-        <script defer src="dist/js/ib-loading.js?v=5"></script>
+        <script defer src="dist/js/ib-loading.js?v=11"></script>
 
         <!-- Favicon -->
         <link rel="icon" type="image/png" sizes="16x16" href="../admin/dist/img/acleda_logo.png">
         <!--Inject SWAL-->
         <?php if (isset($success)) { ?>
-            <!--This code for injecting success alert-->
-            <script>
-                setTimeout(function() {
-                        swal("Success", "<?php echo $success; ?>", "success");
-                    },
-                    100);
-            </script>
+             <!--This code for injecting success alert-->
+             <script>
+                 setTimeout(function() {
+                     // Check if loading API is available
+                     if (window.iBLoading && window.iBLoading.show) {
+                         window.iBLoading.show("Processing Success...");
+                     }
 
-        <?php } ?>
+                     setTimeout(function() {
+                         // Hide loading before showing swal to avoid overlap
+                         if (window.iBLoading && window.iBLoading.hide) {
+                             window.iBLoading.hide();
+                         }
+
+                         swal("Successfully", "<?php echo $success; ?>", "success")
+                             .then(() => {
+                                 if (window.iBLoading && window.iBLoading.show) {
+                                     window.iBLoading.show("Update Successfully");
+                                     setTimeout(function() {
+                                         window.iBLoading.hide();
+                                     }, 1000);
+                                 }
+                             });
+                     }, 800); // Show loading for 800ms
+                 }, 100);
+             </script>
+
+         <?php } ?>
 
         <?php if (isset($err)) { ?>
             <!--This code for injecting error alert-->
@@ -150,16 +169,7 @@ while ($sys = $res->fetch_object()) {
             </script>
 
         <?php } ?>
-        <?php if (isset($info)) { ?>
-            <!--This code for injecting info alert-->
-            <script>
-                setTimeout(function() {
-                        swal("Success", "<?php echo $info; ?>", "warning");
-                    },
-                    100);
-            </script>
 
-        <?php } ?>
         <script>
             function getiBankAccs(val)
 
@@ -199,6 +209,74 @@ while ($sys = $res->fetch_object()) {
             }
         </script>
 
+        <script>
+            function confirmDelete(url) {
+                // Use the official API to manage the overlay
+                if (window.iBLoading && window.iBLoading.hide) {
+                    window.iBLoading.hide();
+                }
+
+                swal({
+                    title: "Are you sure?",
+                    text: "Do you want to delete this data?",
+                    icon: "warning",
+                    buttons: ["No", "Yes"],
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        if (window.iBLoading && window.iBLoading.show) {
+                            window.iBLoading.show("Deleting Records...");
+                        }
+                        window.location.href = url;
+                    } else {
+                        if (window.iBLoading && window.iBLoading.show) {
+                            window.iBLoading.show("Keeping Records...");
+                            setTimeout(() => window.iBLoading.hide(), 600);
+                        }
+                    }
+                });
+            }
+
+            function confirmUpdate(event) {
+                event.preventDefault(); // Prevent immediate form submission
+                var form = event.target.closest('form');
+                
+                if (window.iBLoading && window.iBLoading.hide) {
+                    window.iBLoading.hide();
+                }
+
+                swal({
+                    title: "Are you sure?",
+                    text: "Do you want to update this data?",
+                    icon: "info",
+                    buttons: ["No", "Yes"],
+                    dangerMode: false,
+                })
+                .then((willUpdate) => {
+                    if (willUpdate) {
+                        if (window.iBLoading && window.iBLoading.show) {
+                            window.iBLoading.show("Processing Changes...");
+                        }
+                        // If there's a submit button with a name, we need to ensure it's sent
+                        const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+                        if (submitBtn && submitBtn.name) {
+                            var input = document.createElement('input');
+                            input.type = 'hidden';
+                            input.name = submitBtn.name;
+                            input.value = submitBtn.value || '1';
+                            form.appendChild(input);
+                        }
+                        form.submit();
+                    } else {
+                         if (window.iBLoading && window.iBLoading.show) {
+                            window.iBLoading.show("Continuing...");
+                            setTimeout(() => window.iBLoading.hide(), 600);
+                        }
+                    }
+                });
+            }
+        </script>
     </head>
 <?php
 } ?>

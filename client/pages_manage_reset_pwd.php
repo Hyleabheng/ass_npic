@@ -77,7 +77,7 @@ if (isset($_GET['ClearReset'])) {
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank password reset requests
+                    //fetch all ACLEDA BANK Plc. password reset requests
                     $ret = "SELECT * FROM  iB_password_resets  ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok

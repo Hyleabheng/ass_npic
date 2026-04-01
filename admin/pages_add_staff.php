@@ -59,7 +59,7 @@ if (isset($_POST['create_staff_account'])) {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="pages_add_staff.php">iBanking Staff</a></li>
+                                <li class="breadcrumb-item"><a href="pages_add_staff.php">ACLEDA BANK Plc. Staff</a></li>
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
@@ -93,7 +93,7 @@ if (isset($_POST['create_staff_account'])) {
                                                 $length = 4;
                                                 $_staffNumber =  substr(str_shuffle('0123456789'), 1, $length);
                                                 ?>
-                                                <input type="text" readonly name="staff_number" value="iBank-STAFF-<?php echo $_staffNumber; ?>" class="form-control" id="exampleInputPassword1">
+                                                <input type="text" readonly name="staff_number" value="ACLEDA BANK Plc.-STAFF-<?php echo $_staffNumber; ?>" class="form-control" id="exampleInputPassword1">
                                             </div>
                                         </div>
 
@@ -138,7 +138,7 @@ if (isset($_POST['create_staff_account'])) {
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="submit" name="create_staff_account" class="btn btn-success">Add Staff</button>
+                                        <button type="submit" name="create_staff_account" onclick="confirmUpdate(event)" class="btn btn-success">Add Staff</button>
                                     </div>
                                 </form>
                             </div>

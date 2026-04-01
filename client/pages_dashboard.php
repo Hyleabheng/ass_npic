@@ -19,7 +19,7 @@ $stmt->bind_result($iBClients);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Staffs
+//return total number of ACLEDA BANK Plc. Staffs
 $result = "SELECT count(*) FROM iB_staff";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -27,7 +27,7 @@ $stmt->bind_result($iBStaffs);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Account Types
+//return total number of ACLEDA BANK Plc. Account Types
 $result = "SELECT count(*) FROM iB_Acc_types";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -35,7 +35,7 @@ $stmt->bind_result($iB_AccsType);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Accounts
+//return total number of ACLEDA BANK Plc. Accounts
 $result = "SELECT count(*) FROM iB_bankAccounts";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -43,7 +43,7 @@ $stmt->bind_result($iB_Accs);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Deposits
+//return total number of ACLEDA BANK Plc. Deposits
 $client_id = $_SESSION['client_id'];
 $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  client_id = ? AND tr_type = 'Deposit' ";
 $stmt = $mysqli->prepare($result);
@@ -53,7 +53,7 @@ $stmt->bind_result($iB_deposits);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Withdrawals
+//return total number of ACLEDA BANK Plc. Withdrawals
 $client_id = $_SESSION['client_id'];
 $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  client_id = ? AND tr_type = 'Withdrawal' ";
 $stmt = $mysqli->prepare($result);
@@ -65,7 +65,7 @@ $stmt->close();
 
 
 
-//return total number of iBank Transfers
+//return total number of ACLEDA BANK Plc. Transfers
 $client_id = $_SESSION['client_id'];
 $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  client_id = ? AND tr_type = 'Transfer' ";
 $stmt = $mysqli->prepare($result);
@@ -75,28 +75,19 @@ $stmt->bind_result($iB_Transfers);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of  iBank initial cash->balances
+//return total number of incoming transfers for all accounts of this client
 $client_id = $_SESSION['client_id'];
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions  WHERE client_id =?";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE tr_type = 'Transfer' AND receiving_acc_no IN (SELECT account_number FROM iB_bankAccounts WHERE client_id = ?)";
 $stmt = $mysqli->prepare($result);
 $stmt->bind_param('i', $client_id);
 $stmt->execute();
-$stmt->bind_result($acc_amt);
+$stmt->bind_result($iB_incoming_transfers);
 $stmt->fetch();
 $stmt->close();
+
 //Get the remaining money in the accounts
-$TotalBalInAccount = ($iB_deposits)  - (($iB_withdrawal) + ($iB_Transfers));
-
-
-//ibank money in the wallet
-$client_id = $_SESSION['client_id'];
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions  WHERE client_id = ?";
-$stmt = $mysqli->prepare($result);
-$stmt->bind_param('i', $client_id);
-$stmt->execute();
-$stmt->bind_result($new_amt);
-$stmt->fetch();
-$stmt->close();
+$TotalBalInAccount = ($iB_deposits + $iB_incoming_transfers)  - (($iB_withdrawal) + $iB_Transfers);
+$new_amt = $TotalBalInAccount;
 //Withdrawal Computations
 
 ?>
@@ -140,7 +131,7 @@ $stmt->close();
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <!--iBank Deposits -->
+            <!--ACLEDA BANK Plc. Deposits -->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-upload"></i></span>
@@ -152,9 +143,9 @@ $stmt->close();
                 </div>
               </div>
             </div>
-            <!----./ iBank Deposits-->
+            <!----./ ACLEDA BANK Plc. Deposits-->
 
-            <!--iBank Withdrwals-->
+            <!--ACLEDA BANK Plc. Withdrwals-->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box mb-3">
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-download"></i></span>
@@ -260,7 +251,7 @@ $stmt->close();
                     <!-- /.col -->
                     <div class="col-sm-3 col-6">
                       <div class="description-block">
-                        <h5 class="description-header">$ <?php echo $new_amt; ?> </h5>
+                        <h5 class="description-header">$ <?php echo $TotalBalInAccount; ?> </h5>
                         <span class="description-text">TOTAL MONEY IN  Account</span>
                       </div>
                       <!-- /.description-block -->

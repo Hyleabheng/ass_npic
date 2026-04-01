@@ -75,7 +75,7 @@ while ($auth = $res->fetch_object()) {
               //PHP function to generate random
               $length = 4;
               $_Number =  substr(str_shuffle('0123456789'), 1, $length); ?>
-              <input type="text" name="client_number" value="iBank-CLIENT-<?php echo $_Number; ?>" class="form-control" placeholder="Client Number">
+              <input type="text" name="client_number" value="ACLEDA BANK Plc.-CLIENT-<?php echo $_Number; ?>" class="form-control" placeholder="Client Number">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>

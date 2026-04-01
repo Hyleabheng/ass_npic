@@ -33,7 +33,7 @@ $client_id = $_SESSION['client_id'];
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="pages_manage_clients.php">iBank Loans</a></li>
+                <li class="breadcrumb-item"><a href="pages_manage_clients.php">ACLEDA BANK Plc. Loans</a></li>
                 <li class="breadcrumb-item active">Give Loans</li>
               </ol>
             </div>
@@ -65,7 +65,7 @@ $client_id = $_SESSION['client_id'];
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank clients
+                    //fetch all ACLEDA BANK Plc. clients
                     $ret = "SELECT * FROM  iB_clients ORDER BY RAND() ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok

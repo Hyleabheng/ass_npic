@@ -47,7 +47,7 @@ if (isset($_GET['fireStaff'])) {
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="pages_manage_staff.php">iBank Staffs</a></li>
+                <li class="breadcrumb-item"><a href="pages_manage_staff.php">ACLEDA BANK Plc. Staffs</a></li>
                 <li class="breadcrumb-item active">Manage Staffs</li>
               </ol>
             </div>
@@ -78,7 +78,7 @@ if (isset($_GET['fireStaff'])) {
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank staffs
+                    //fetch all ACLEDA BANK Plc. staffs
                     $ret = "SELECT * FROM  iB_staff ORDER BY RAND() ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok

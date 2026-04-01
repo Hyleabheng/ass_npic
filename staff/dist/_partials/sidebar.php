@@ -102,7 +102,7 @@
             </li>
             <!-- ./ Clients -->
 
-            <!--iBank Accounts-->
+            <!--ACLEDA BANK Plc. Accounts-->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-briefcase"></i>
@@ -127,7 +127,7 @@
                 <li class="nav-item">
                   <a href="pages_open_acc.php" class="nav-link">
                     <i class="fas fa-lock-open nav-icon"></i>
-                    <p>Open iBank Acc</p>
+                    <p>Open ACLEDA BANK Plc. Acc</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -138,7 +138,7 @@
                 </li>
               </ul>
             </li>
-            <!--./ iBank Acounts-->
+            <!--./ ACLEDA BANK Plc. Acounts-->
 
             <!--Finances-->
             <li class="nav-item has-treeview">

@@ -98,7 +98,7 @@
                 </li>
               </ul>
             </li>
-            <!-- ./iBank staff-->
+            <!-- ./ACLEDA BANK Plc. staff-->
 
             <!--Clients -->
             <li class="nav-item has-treeview">
@@ -126,7 +126,7 @@
             </li>
             <!-- ./ Clients -->
 
-            <!--iBank Accounts-->
+            <!--ACLEDA BANK Plc. Accounts-->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-briefcase"></i>
@@ -162,7 +162,7 @@
                 </li>
               </ul>
             </li>
-            <!--./ iBank Acounts-->
+            <!--./ ACLEDA BANK Plc. Acounts-->
 
             <!--Finances-->
             <li class="nav-item has-treeview">
@@ -217,7 +217,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-receipt"></i>
               <p>
-                   iBanking Statements
+                   ACLEDA BANK Plc. Statements
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

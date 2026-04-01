@@ -121,7 +121,7 @@ if (isset($_POST['change_password'])) {
 
                                         <h3 class="profile-username text-center"><?php echo $row->name; ?></h3>
 
-                                        <p class="text-muted text-center">@Admin iBanking </p>
+                                        <p class="text-muted text-center">@Admin ACLEDA BANK Plc. </p>
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
@@ -175,7 +175,7 @@ if (isset($_POST['change_password'])) {
                                                     </div><!-- Log on to codeastro.com for more projects! -->
                                                     <div class="form-group row">
                                                         <div class="offset-sm-2 col-sm-10">
-                                                            <button name="update_account" type="submit" class="btn btn-outline-success">Update Account</button>
+                                                            <button name="update_account" type="submit" onclick="confirmUpdate(event)" class="btn btn-outline-success">Update Account</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -204,7 +204,7 @@ if (isset($_POST['change_password'])) {
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="offset-sm-2 col-sm-10">
-                                                            <button type="submit" name="change_password" class="btn btn-outline-success">Change Password</button>
+                                                            <button type="submit" name="change_password" onclick="confirmUpdate(event)" class="btn btn-outline-success">Change Password</button>
                                                         </div>
                                                     </div>
 

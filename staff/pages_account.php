@@ -15,13 +15,16 @@ if (isset($_POST['update_staff_account'])) {
     $sex  = $_POST['sex'];
 
     $profile_pic  = $_FILES["profile_pic"]["name"];
-    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
-
-    //Insert Captured information to a database table
-    $query = "UPDATE iB_staff SET name=?, phone=?, email=?, sex=?, profile_pic=? WHERE staff_id=?";
-    $stmt = $mysqli->prepare($query);
-    //bind paramaters
-    $rc = $stmt->bind_param('sssssi', $name, $phone, $email, $sex, $profile_pic, $staff_id);
+    if (!empty($profile_pic)) {
+        move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
+        $query = "UPDATE iB_staff SET name=?, phone=?, email=?, sex=?, profile_pic=? WHERE staff_id=?";
+        $stmt = $mysqli->prepare($query);
+        $rc = $stmt->bind_param('sssssi', $name, $phone, $email, $sex, $profile_pic, $staff_id);
+    } else {
+        $query = "UPDATE iB_staff SET name=?, phone=?, email=?, sex=? WHERE staff_id=?";
+        $stmt = $mysqli->prepare($query);
+        $rc = $stmt->bind_param('ssssi', $name, $phone, $email, $sex, $staff_id);
+    }
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -107,7 +110,7 @@ if (isset($_POST['change_staff_password'])) {
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="pages_manage.php">iBanking Staffs</a></li>
+                                    <li class="breadcrumb-item"><a href="pages_manage.php">ACLEDA BANK Plc. Staffs</a></li>
                                     <li class="breadcrumb-item"><a href="pages_manage.php">Manage</a></li>
                                     <li class="breadcrumb-item active"><?php echo $row->name; ?></li>
                                 </ol>
@@ -131,7 +134,7 @@ if (isset($_POST['change_staff_password'])) {
 
                                         <h3 class="profile-username text-center"><?php echo $row->name; ?></h3>
 
-                                        <p class="text-muted text-center">Staff @iBanking </p>
+                                        <p class="text-muted text-center">Staff @ACLEDA BANK Plc. </p>
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
@@ -239,14 +242,14 @@ if (isset($_POST['change_staff_password'])) {
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Gender</label>
                                                         <div class="col-sm-10">
                                                             <select class="form-control" name="sex">
-                                                                <option>Male</option>
-                                                                <option>Female</option>
+                                                                <option <?php echo ($row->sex == 'Male') ? 'selected' : ''; ?>>Male</option>
+                                                                <option <?php echo ($row->sex == 'Female') ? 'selected' : ''; ?>>Female</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="offset-sm-2 col-sm-10">
-                                                            <button name="update_staff_account" type="submit" class="btn btn-outline-success">Update Account</button>
+                                                            <button name="update_staff_account" type="submit" onclick="confirmUpdate(event)" class="btn btn-outline-success">Update Account</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -275,7 +278,7 @@ if (isset($_POST['change_staff_password'])) {
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="offset-sm-2 col-sm-10">
-                                                            <button type="submit" name="change_staff_password" class="btn btn-outline-success">Change Password</button>
+                                                            <button type="submit" name="change_staff_password" onclick="confirmUpdate(event)" class="btn btn-outline-success">Change Password</button>
                                                         </div>
                                                     </div>
 

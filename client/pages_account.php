@@ -108,7 +108,7 @@ if (isset($_POST['change_client_password'])) {
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                    <!-- <li class="breadcrumb-item"><a href="pages_manage_clients.php">iBanking Clients</a></li> -->
+                                    <!-- <li class="breadcrumb-item"><a href="pages_manage_clients.php">ACLEDA BANK Plc. Clients</a></li> -->
                                     <li class="breadcrumb-item"><a href="pages_manage_clients.php">Manage</a></li>
                                     <li class="breadcrumb-item active"><?php echo $row->name; ?></li>
                                 </ol>
@@ -133,7 +133,7 @@ if (isset($_POST['change_client_password'])) {
 
                                         <h3 class="profile-username text-center"><?php echo $row->name; ?></h3>
 
-                                        <p class="text-muted text-center">Client @iBanking </p>
+                                        <p class="text-muted text-center">Client @ACLEDA BANK Plc. </p>
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
@@ -252,11 +252,11 @@ if (isset($_POST['change_client_password'])) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <div class="offset-sm-2 col-sm-10">
-                                                            <button name="update_client_account" type="submit" class="btn btn-outline-success">Update Account</button>
-                                                        </div>
-                                                    </div>
+                                                     <div class="form-group row">
+                                                         <div class="offset-sm-2 col-sm-10">
+                                                             <button name="update_client_account" type="submit" onclick="confirmUpdate(event)" class="btn btn-outline-success">Update Account</button>
+                                                         </div>
+                                                     </div>
                                                 </form>
                                             </div><!-- Log on to codeastro.com for more projects! -->
 
@@ -281,11 +281,11 @@ if (isset($_POST['change_client_password'])) {
                                                             <input type="password" class="form-control" required id="inputName2">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <div class="offset-sm-2 col-sm-10">
-                                                            <button type="submit" name="change_client_password" class="btn btn-outline-success">Change Password</button>
-                                                        </div>
-                                                    </div>
+                                                     <div class="form-group row">
+                                                         <div class="offset-sm-2 col-sm-10">
+                                                             <button type="submit" name="change_client_password" onclick="confirmUpdate(event)" class="btn btn-outline-success">Change Password</button>
+                                                         </div>
+                                                     </div>
 
                                                 </form>
                                             </div>

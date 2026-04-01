@@ -28,13 +28,13 @@ $admin_id = $_SESSION['admin_id'];
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Open An iBanking Account</h1>
+              <h1>Open An ACLEDA BANK Plc. Account</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="">iBanking Accounts</a></li>
-                <li class="breadcrumb-item active">Open iBank Account</li>
+                <li class="breadcrumb-item"><a href="">ACLEDA BANK Plc. Accounts</a></li>
+                <li class="breadcrumb-item active">Open ACLEDA BANK Plc. Account</li>
               </ol>
             </div>
           </div>
@@ -65,7 +65,7 @@ $admin_id = $_SESSION['admin_id'];
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank clients
+                    //fetch all ACLEDA BANK Plc. clients
                     $ret = "SELECT * FROM  iB_clients ORDER BY RAND() ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok

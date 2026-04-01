@@ -39,7 +39,7 @@ $client_id = $_SESSION['client_id'];
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1><?php echo $row->name; ?> iBanking Accounts</h1>
+                                <h1><?php echo $row->name; ?> ACLEDA BANK Plc. Accounts</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">

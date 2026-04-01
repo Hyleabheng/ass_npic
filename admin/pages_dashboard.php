@@ -34,7 +34,7 @@ $stmt->bind_result($iBClients);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Staffs
+//return total number of ACLEDA BANK Plc. Staffs
 $result = "SELECT count(*) FROM iB_staff";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -42,7 +42,7 @@ $stmt->bind_result($iBStaffs);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Account Types
+//return total number of ACLEDA BANK Plc. Account Types
 $result = "SELECT count(*) FROM iB_Acc_types";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -50,7 +50,7 @@ $stmt->bind_result($iB_AccsType);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Accounts
+//return total number of ACLEDA BANK Plc. Accounts
 $result = "SELECT count(*) FROM iB_bankAccounts";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -58,7 +58,7 @@ $stmt->bind_result($iB_Accs);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Deposits
+//return total number of ACLEDA BANK Plc. Deposits
 $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Deposit' ";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -66,7 +66,7 @@ $stmt->bind_result($iB_deposits);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of iBank Withdrawals
+//return total number of ACLEDA BANK Plc. Withdrawals
 $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Withdrawal' ";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -76,7 +76,7 @@ $stmt->close();
 
 
 
-//return total number of iBank Transfers
+//return total number of ACLEDA BANK Plc. Transfers
 $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Transfer' ";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -84,7 +84,7 @@ $stmt->bind_result($iB_Transfers);
 $stmt->fetch();
 $stmt->close();
 
-//return total number of  iBank initial cash->balances
+//return total number of  ACLEDA BANK Plc. initial cash->balances
 $result = "SELECT SUM(transaction_amt) FROM iB_Transactions ";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
@@ -92,7 +92,7 @@ $stmt->bind_result($acc_amt);
 $stmt->fetch();
 $stmt->close();
 //Get the remaining money in the accounts
-$TotalBalInAccount = ($iB_deposits)  - (($iB_withdrawal) + ($iB_Transfers));
+$TotalBalInAccount = ($iB_deposits)  - ($iB_withdrawal);
 
 
 //ibank money in the wallet
@@ -147,7 +147,7 @@ $stmt->close();
           <!-- Info boxes -->
           <div class="row">
 
-            <!-- ./ iBank Clients -->
+            <!-- ./ ACLEDA BANK Plc. Clients -->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
@@ -159,9 +159,9 @@ $stmt->close();
                 </div>
               </div>
             </div>
-            <!-- ./ iBank Clients -->
+            <!-- ./ ACLEDA BANK Plc. Clients -->
 
-            <!--iBank Staffs-->
+            <!--ACLEDA BANK Plc. Staffs-->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box mb-3">
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-tie"></i></span>
@@ -174,7 +174,7 @@ $stmt->close();
                 </div>
               </div>
             </div>
-            <!-- ./ iBank Staffs-->
+            <!-- ./ ACLEDA BANK Plc. Staffs-->
 
             <!-- fix for small devices only -->
             <div class="clearfix hidden-md-up"></div>
@@ -189,9 +189,9 @@ $stmt->close();
                 </div>
               </div>
             </div>
-            <!-- /.iBank Acc types -->
+            <!-- /.ACLEDA BANK Plc. Acc types -->
 
-            <!--iBank Accounts-->
+            <!--ACLEDA BANK Plc. Accounts-->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box mb-3">
                 <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-users"></i></span>
@@ -201,11 +201,11 @@ $stmt->close();
                 </div>
               </div>
             </div>
-            <!-- iBank Acc-->
+            <!-- ACLEDA BANK Plc. Acc-->
           </div>
 
           <div class="row">
-            <!--iBank Deposits -->
+            <!--ACLEDA BANK Plc. Deposits -->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-upload"></i></span>
@@ -217,9 +217,9 @@ $stmt->close();
                 </div>
               </div>
             </div>
-            <!----./ iBank Deposits-->
+            <!----./ ACLEDA BANK Plc. Deposits-->
 
-            <!--iBank Withdrwals-->
+            <!--ACLEDA BANK Plc. Withdrwals-->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box mb-3">
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-download"></i></span>

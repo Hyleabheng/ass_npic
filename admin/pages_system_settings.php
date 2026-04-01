@@ -106,7 +106,7 @@ if (isset($_POST['systemSettings'])) {
                       </div>
                     </div>
                     <div class="text-right">
-                      <button type="submit" name="systemSettings" class="btn btn-success">Submit</button>
+                      <button type="submit" name="systemSettings" onclick="confirmUpdate(event)" class="btn btn-success">Submit</button>
                     </div>
                   </form>
                 <?php

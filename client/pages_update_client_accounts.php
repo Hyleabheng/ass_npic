@@ -70,12 +70,12 @@ if (isset($_POST['update_account'])) {
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Update <?php echo $row->client_name; ?> iBanking Account</h1>
+                                <h1>Update <?php echo $row->client_name; ?> ACLEDA BANK Plc. Account</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="pages_open_acc.php">iBanking Accounts</a></li>
+                                    <li class="breadcrumb-item"><a href="pages_open_acc.php">ACLEDA BANK Plc. Accounts</a></li>
                                     <li class="breadcrumb-item"><a href="pages_open_acc.php">Manage </a></li>
                                     <li class="breadcrumb-item active"><?php echo $row->client_name; ?></li>
                                 </ol>
@@ -185,7 +185,7 @@ if (isset($_POST['update_account'])) {
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" name="update_account" class="btn btn-success">Update iBanking Account</button>
+                                            <button type="submit" name="update_account" onclick="confirmUpdate(event)" class="btn btn-success">Update ACLEDA BANK Plc. Account</button>
                                         </div>
                                     </form>
                                 </div>

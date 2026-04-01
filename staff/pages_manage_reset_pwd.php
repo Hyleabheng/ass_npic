@@ -77,7 +77,7 @@ if (isset($_GET['ClearReset'])) {
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank password reset requests
+                    //fetch all ACLEDA BANK Plc. password reset requests
                     $ret = "SELECT * FROM  iB_password_resets  ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok
@@ -121,7 +121,7 @@ if (isset($_GET['ClearReset'])) {
                           ?>
 
 
-                          <a class="btn btn-danger btn-sm" href="pages_manage_reset_pwd.php?ClearReset=<?php echo $row->id; ?>">
+                          <a class="btn btn-danger btn-sm" href="pages_manage_reset_pwd.php?ClearReset=<?php echo $row->id; ?>" onclick="event.preventDefault(); confirmDelete(this.href);">
                             <i class="fas fa-trash"></i>
                             <!-- <i class="fas fa-lock"></i> -->
                             Delete

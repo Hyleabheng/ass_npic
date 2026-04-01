@@ -33,7 +33,7 @@ $staff_id = $_SESSION['staff_id'];
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="pages_deposits">iBank Finances</a></li>
+                <li class="breadcrumb-item"><a href="pages_deposits">ACLEDA BANK Plc. Finances</a></li>
                 <li class="breadcrumb-item active">Deposits</li>
               </ol>
             </div>

@@ -166,6 +166,7 @@
     showLoading();
     setTimeout(hideLoading, INITIAL_VISIBLE_MS);
 
+    // Show on all form submits
     document.addEventListener(
       "submit",
       function (e) {
@@ -177,11 +178,13 @@
       true
     );
 
+    // Global jQuery AJAX bindings for background forms & tables
     if (window.jQuery) {
       window.jQuery(document).ajaxStart(function () { showLoading(); });
       window.jQuery(document).ajaxStop(function () { hideLoading(); });
     }
 
+    // Show on normal link clicks (navigation)
     document.addEventListener(
       "click",
       function (e) {
@@ -198,4 +201,3 @@
     );
   });
 })();
-

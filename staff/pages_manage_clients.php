@@ -42,12 +42,12 @@ if (isset($_GET['deleteClient'])) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>iBanking Clients</h1>
+              <h1>ACLEDA BANK Plc. Clients</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="pages_manage_clients.php">iBank Staffs</a></li>
+                <li class="breadcrumb-item"><a href="pages_manage_clients.php">ACLEDA BANK Plc. Staffs</a></li>
                 <li class="breadcrumb-item active">Manage Clients</li>
               </ol>
             </div>
@@ -79,7 +79,7 @@ if (isset($_GET['deleteClient'])) {
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank clients
+                    //fetch all ACLEDA BANK Plc. clients
                     $ret = "SELECT * FROM  iB_clients ORDER BY RAND() ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok
@@ -104,7 +104,7 @@ if (isset($_GET['deleteClient'])) {
                             Manage
                           </a>
 
-                          <a class="btn btn-danger btn-sm" href="pages_manage_clients.php?deleteClient=<?php echo $row->client_id; ?>">
+                          <a class="btn btn-danger btn-sm" href="pages_manage_clients.php?deleteClient=<?php echo $row->client_id; ?>" onclick="event.preventDefault(); confirmDelete(this.href);">
                             <i class="fas fa-trash"></i>
                             <!-- <i class="fas fa-user"></i> -->
                             Delete

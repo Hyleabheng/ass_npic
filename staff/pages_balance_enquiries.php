@@ -65,7 +65,7 @@ $staff_id = $_SESSION['staff_id'];
                   </thead>
                   <tbody>
                     <?php
-                    //fetch all iBank clients
+                    //fetch all ACLEDA BANK Plc. clients
                     $ret = "SELECT * FROM  iB_clients ORDER BY RAND() ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok

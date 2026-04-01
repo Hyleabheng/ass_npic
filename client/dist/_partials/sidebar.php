@@ -75,12 +75,12 @@
             </li>
             <!-- ./Account-->
 
-            <!--iBank Accounts-->
+            <!--ACLEDA BANK Plc. Accounts-->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-briefcase"></i>
                 <p>
-                  iBank Accounts
+                  ACLEDA BANK Plc. Accounts
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -88,18 +88,18 @@
                 <li class="nav-item">
                   <a href="pages_open_acc.php" class="nav-link">
                     <i class="fas fa-lock-open nav-icon"></i>
-                    <p>Open iBank Acc</p>
+                    <p>Open ACLEDA BANK Plc. Acc</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="pages_manage_acc_openings.php" class="nav-link">
                     <i class="fas fa-cog nav-icon"></i>
-                    <p>My iBank Accounts</p>
+                    <p>My ACLEDA BANK Plc. Accounts</p>
                   </a>
                 </li>
               </ul>
             </li>
-            <!--./ iBank Acounts-->
+            <!--./ ACLEDA BANK Plc. Acounts-->
 
             <!--Finances-->
             <li class="nav-item has-treeview">

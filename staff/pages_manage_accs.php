@@ -41,12 +41,12 @@ if (isset($_GET['deleteBankAccType'])) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>iBanking Account Types</h1>
+              <h1>ACLEDA BANK Plc. Account Types</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="pages_manage_accs.php">iBank Account Types</a></li>
+                <li class="breadcrumb-item"><a href="pages_manage_accs.php">ACLEDA BANK Plc. Account Types</a></li>
                 <li class="breadcrumb-item active">Manage Clients</li>
               </ol>
             </div>
@@ -98,7 +98,7 @@ if (isset($_GET['deleteBankAccType'])) {
                             Manage
                           </a>
 
-                          <a class="btn btn-danger btn-sm" href="pages_manage_accs.php?deleteBankAccType=<?php echo $row->acctype_id; ?>">
+                          <a class="btn btn-danger btn-sm" href="pages_manage_accs.php?deleteBankAccType=<?php echo $row->acctype_id; ?>" onclick="event.preventDefault(); confirmDelete(this.href);">
                             <i class="fas fa-trash"></i>
                             <!-- <i class="fas fa-briefcase"></i> -->
                             Delete

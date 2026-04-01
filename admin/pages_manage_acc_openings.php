@@ -14,7 +14,7 @@ if (isset($_GET['deleteBankAcc'])) {
   $stmt->close();
 
   if ($stmt) {
-    $info = "iBanking Account Closed";
+    $info = "ACLEDA BANK Plc. Account Closed";
   } else {
     $err = "Try Again Later";
   }
@@ -42,12 +42,12 @@ if (isset($_GET['deleteBankAcc'])) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Manage iBanking Accounts</h1>
+              <h1>Manage ACLEDA BANK Plc. Accounts</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="pages_manage_acc_openings.php">iBank Accounts</a></li>
+                <li class="breadcrumb-item"><a href="pages_manage_acc_openings.php">ACLEDA BANK Plc. Accounts</a></li>
                 <li class="breadcrumb-item active">Manage Accounts</li>
               </ol>
             </div>
@@ -106,7 +106,7 @@ if (isset($_GET['deleteBankAcc'])) {
                             Manage
                           </a>
 
-                          <a class="btn btn-danger btn-sm" href="pages_manage_acc_openings.php?deleteBankAcc=<?php echo $row->account_id; ?>">
+                          <a class="btn btn-danger btn-sm" href="pages_manage_acc_openings.php?deleteBankAcc=<?php echo $row->account_id; ?>" onclick="event.preventDefault(); confirmDelete(this.href);">
                             <i class="fas fa-times"></i>
                             <!-- <i class="fas fa-briefcase"></i> -->
                             Close Account

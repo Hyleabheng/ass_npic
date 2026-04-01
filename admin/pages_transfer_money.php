@@ -34,13 +34,49 @@ if (isset($_POST['deposit'])) {
             *You cant transfer money from an bank account that has no money in it so
             *Lets Handle that here.
             */
-    $result = "SELECT SUM(transaction_amt) FROM  iB_Transactions  WHERE account_id=?";
+    //get the total amount deposited
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Deposit' ";
     $stmt = $mysqli->prepare($result);
     $stmt->bind_param('i', $account_id);
     $stmt->execute();
-    $stmt->bind_result($amt);
+    $stmt->bind_result($deposit);
     $stmt->fetch();
     $stmt->close();
+
+    //get total amount withdrawn
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Withdrawal' ";
+    $stmt = $mysqli->prepare($result);
+    $stmt->bind_param('i', $account_id);
+    $stmt->execute();
+    $stmt->bind_result($withdrawal);
+    $stmt->fetch();
+    $stmt->close();
+
+    //get total amount transfered
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Transfer' ";
+    $stmt = $mysqli->prepare($result);
+    $stmt->bind_param('i', $account_id);
+    $stmt->execute();
+    $stmt->bind_result($Transfer);
+    $stmt->fetch();
+    $stmt->close();
+
+    //get incoming transfers
+    $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE receiving_acc_no = ? AND tr_type = 'Transfer'";
+    $stmt = $mysqli->prepare($result);
+    $stmt->bind_param('s', $account_number);
+    $stmt->execute();
+    $stmt->bind_result($incoming_transfer);
+    $stmt->fetch();
+    $stmt->close();
+
+    //compute Funds In (Deposits + Incoming Transfers)
+    $funds_in = $deposit + $incoming_transfer;
+    //compute Funds Out (Withdrawals + Transfers)
+    $funds_out = $withdrawal + $Transfer;
+
+    //compute the balance
+    $amt = $funds_in - $funds_out;
 
 
 
@@ -101,14 +137,49 @@ if (isset($_POST['deposit'])) {
         $res = $stmt->get_result();
         $cnt = 1;
         while ($row = $res->fetch_object()) {
-            //Indicate Account Balance 
-            $result = "SELECT SUM(transaction_amt) FROM  iB_Transactions  WHERE account_id=?";
+            //get the total amount deposited
+            $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Deposit' ";
             $stmt = $mysqli->prepare($result);
             $stmt->bind_param('i', $account_id);
             $stmt->execute();
-            $stmt->bind_result($amt);
+            $stmt->bind_result($deposit);
             $stmt->fetch();
             $stmt->close();
+
+            //get total amount withdrawn
+            $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Withdrawal' ";
+            $stmt = $mysqli->prepare($result);
+            $stmt->bind_param('i', $account_id);
+            $stmt->execute();
+            $stmt->bind_result($withdrawal);
+            $stmt->fetch();
+            $stmt->close();
+
+            //get total amount transfered
+            $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  account_id = ? AND  tr_type = 'Transfer' ";
+            $stmt = $mysqli->prepare($result);
+            $stmt->bind_param('i', $account_id);
+            $stmt->execute();
+            $stmt->bind_result($Transfer);
+            $stmt->fetch();
+            $stmt->close();
+
+            //get incoming transfers
+            $result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE receiving_acc_no = ? AND tr_type = 'Transfer'";
+            $stmt = $mysqli->prepare($result);
+            $stmt->bind_param('s', $row->account_number);
+            $stmt->execute();
+            $stmt->bind_result($incoming_transfer);
+            $stmt->fetch();
+            $stmt->close();
+
+            //compute Funds In (Deposits + Incoming Transfers)
+            $funds_in = $deposit + $incoming_transfer;
+            //compute Funds Out (Withdrawals + Transfers)
+            $funds_out = $withdrawal + $Transfer;
+
+            //compute the balance
+            $amt = $funds_in - $funds_out;
 
         ?>
             <div class="content-wrapper">
